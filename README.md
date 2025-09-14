@@ -1,6 +1,4 @@
-<p align="center">
-  <img src="images/lld-repo-logo.png" width="350" height="200">
-</p>
+
 <p align="center">
   <a href="https://blog.algomaster.io/">Join Free Newsletter- This is a copy for my referance and practise</a>
 </p>
