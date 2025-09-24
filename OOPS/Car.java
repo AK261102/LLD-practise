@@ -1,3 +1,5 @@
+import Factory_Design_Pattern.Car;
+
 public class Car {
     String manufacturer;
     String model;
