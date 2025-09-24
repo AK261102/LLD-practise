@@ -20,17 +20,16 @@ public class Car {
         this.sunroof = builder.sunroof;
         this.navigationSystem = builder.navigationSystem;
     }
-    // Getter methods for the fields
-    public String getEngine() {
+    public String getEngine(){
         return engine;
     }
-    public int getWheels() {
+    public int getVehicle(){
         return wheels;
     }
-    public int getSeats() {
+    public int getSeats(){
         return seats;
     }
-    public String getColor() {
+     public String getColor() {
         return color;
     }
     public boolean hasSunroof() {
@@ -40,35 +39,36 @@ public class Car {
         return navigationSystem;
     }
     @Override
-    public String toString() {
-        return "Car [engine=" + engine + ", wheels=" + wheels + ", seats=" + seats
+    public String toString(){
+         return "Car [engine=" + engine + ", wheels=" + wheels + ", seats=" + seats
                 + ", color=" + color + ", sunroof=" + sunroof
                 + ", navigationSystem=" + navigationSystem + "]";
     }
 
-    // CarBuilder nested class
-    public static class CarBuilder {
+    public static class CarBuilder{
         private String engine;
-        private int wheels = 4; // Default value
-        private int seats = 5; // Default value
+        private int wheels=4;
+         private int seats = 5; // Default value
         private String color = "Black"; // Default value
         private boolean sunroof = false; // Default value
         private boolean navigationSystem = false; // Default value
 
-        // Builder methods to set attributes
-        public CarBuilder setEngine(String engine) {
-            this.engine = engine;
+        public CarBuilder setEnginer(String engine){
+            this.engine=engine;
             return this;
         }
-        public CarBuilder setWheels(int wheels) {
-            this.wheels = wheels;
+
+        public CarBuilder setWheels(int wheels){
+            this.wheels=wheels;
             return this;
         }
-        public CarBuilder setSeats(int seats) {
-            this.seats = seats;
+
+        public CarBuilder setSeats(int wheels){
+            this.wheels=wheels;
             return this;
         }
-        public CarBuilder setColor(String color) {
+
+         public CarBuilder setColor(String color) {
             this.color = color;
             return this;
         }
@@ -86,5 +86,6 @@ public class Car {
             return new Car(
                     this); // Return a new Car created using the builder's values
         }
+
     }
 }
