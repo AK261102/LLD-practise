@@ -13,7 +13,6 @@ public class Main {
         Command turnoff=new TurnOffCommand();
         Command changeV=new AdjustVolumeCommand(tv, 5);
         Command changeC=new ChangeChannelCommand(tv,20);
-
         RemoteControl rc=new RemoteControl();
         rc.pressOnButtom();
         rc.AdjustVolumeCommand(changeV);
