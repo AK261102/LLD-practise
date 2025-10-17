@@ -4,7 +4,7 @@ import Behavioural_Design_Pattern.Visitor_Design_Pattern.Good_Code.Concrete_Pati
 import Behavioural_Design_Pattern.Visitor_Design_Pattern.Good_Code.Concrete_Patients.ChildPatient;
 import Behavioural_Design_Pattern.Visitor_Design_Pattern.Good_Code.Concrete_Patients.SeniorPatient;
 
-public class Visitor {
+public interface Visitor {
     void visit(AdultPatient adultPatient);
     void visit(ChildPatient childPatient);
     void visit(SeniorPatient seniorPatient);
