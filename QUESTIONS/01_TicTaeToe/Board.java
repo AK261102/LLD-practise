@@ -14,7 +14,7 @@ public class Board{
     public Board(int size)
     {
         this.size=size;
-        this.grid=grid[size][size];
+        this.grid = new Symbols[size][size];
         
         // intialize all the grid cells
 
@@ -89,7 +89,7 @@ public class Board{
         {
             for(int j=0;j<size;j++)
             {
-                String symbol = (grid[i][j]==Symbols.EMPTY) ? " ":grid[i][j].tostring();
+                String symbol = (grid[i][j]==Symbols.EMPTY) ? " ":grid[i][j].toString();
                 System.out.print(" "+symbol+" ");
 
                 if(j<size-1)

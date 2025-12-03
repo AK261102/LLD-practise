@@ -1,6 +1,3 @@
-package QUESTIONS.01_TicTaeToe;
-
-
 /**
  * This class has a single respondibilty to store players info
  * 
