@@ -1,30 +1,29 @@
 package QUESTIONS.TicTaeToe_Me.Controller;
 
 import QUESTIONS.TicTaeToe_Me.models.Board;
+import QUESTIONS.TicTaeToe_Me.models.Player;
 
+/**
+ * Move class handles making moves on the board.
+ *
+ * LLD Principle: Single Responsibility
+ * - This class only handles the logic of making a move
+ * - It delegates to Board for actual placement
+ */
 public class Move {
-    public static void makeMove(int i,int j,Player p)
-    {
-        /*
-        who so ever ,turn it will be 
-        we will take the input i ,j and which player is making the changes,because the player changes is associated with player's symbols
-        means that 1st player means X and 2nd player means O
 
-        */
-       if(p.Symbols=='X')
-       {
-        Board[i][j]='X';
-       }
-       else if(p.Symbols=='O')
-       {
-        Board[i][j]='O';
-       }
-       // after making the move, i will check it is winning condition or
-       if(Board.checkWin()==true);
-       // then that player is the winner
-       else if(Board.checkDraw()==true)
-        // return draw
-       else if(Board.continueGame()==true)
-        //next turn next player chale
+    /**
+     * Make a move for the given player at the specified position
+     *
+     * @param board  The game board
+     * @param row    Row index (0-based)
+     * @param col    Column index (0-based)
+     * @param player The player making the move
+     * @return true if move was successful, false otherwise
+     */
+    public static boolean makeMove(Board board, int row, int col, Player player) {
+        // Delegate to board's placeSymbol method
+        // Board handles validation (bounds check, empty cell check)
+        return board.placeSymbol(row, col, player.getSymbol());
     }
 }
