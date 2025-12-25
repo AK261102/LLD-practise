@@ -171,6 +171,6 @@ public class ChessGame {
         }
         endCell.setPiece(sourcePiece);
         startCell.setPiece(null);
-        moveHistory.add(move)
+        moveHistory.add(move);
     }
 }
