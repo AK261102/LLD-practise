@@ -76,25 +76,16 @@ public class ChessGame {
         this.status=GameStatus.ACTIVE;
         this.moveHistory=new ArrayList();
     }
-     // ─────────────────────────────────────────────────────────────
-    // START GAME
-    // ─────────────────────────────────────────────────────────────
-    
-    /**
-     * Main game loop
-     */
-    public void start() {
-        Scanner scanner = new Scanner(System.in);
-        
+    public void start()
+    {
+        Scanner sc=new Scanner(System.in);
         printWelcome();
-        
-        // Game loop - continues while game is active
-        while (status == GameStatus.ACTIVE) {
-            
-            // Show current board
+        while(status==GameStatus.ACTIVE)
+        {
             board.print();
-            
-            // Get current player
+
+        }
+         // Get current player
             Player currentPlayer = isWhiteTurn ? player1 : player2;
             System.out.println("━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━");
             System.out.println(currentPlayer.getName() + "'s turn (" + 
@@ -119,38 +110,13 @@ public class ChessGame {
                 System.out.println("❌ Invalid position! Try again.");
                 continue;
             }
-            
-            // Create move
-            Move move = new Move(startCell, endCell);
-            
-            // Try to make the move
-            if (!makeMove(move, currentPlayer)) {
-                System.out.println("❌ Invalid move! Try again.");
-                continue;
-            }
-            
-            System.out.println("✓ Move successful: " + move);
-        }
-        
-        // Game ended
-        board.print();
-        printResult();
+            Move move=new Move(startCell,endCell);
+
     }
 
-     // ─────────────────────────────────────────────────────────────
-    // MAKE MOVE
-    // ─────────────────────────────────────────────────────────────
-    
-    /**
-     * Validate and execute a move
-     * 
-     * @param move   The move to make
-     * @param player The player making the move
-     * @return true if move was successful
-     */
-    public boolean makeMove(Move move, Player player) {
-        
-        Cell startCell = move.getStartCell();
+    public boolean makeMove(Move move,Player player)
+    {
+         Cell startCell = move.getStartCell();
         Cell endCell = move.getEndCell();
         
         // ─────────────────────────────────────────────────────────
@@ -190,39 +156,21 @@ public class ChessGame {
             System.out.println("   This piece can't move that way!");
             return false;
         }
-        
-        // ─────────────────────────────────────────────────────────
-        // EXECUTE MOVE
-        // ─────────────────────────────────────────────────────────
-        
-        Piece destinationPiece = endCell.getPiece();
-        
-        // Check if capturing King (game over!)
-        if (destinationPiece != null && destinationPiece instanceof King) {
-            if (isWhiteTurn) {
-                status = GameStatus.WHITE_WIN;
-            } else {
-                status = GameStatus.BLACK_WIN;
-            }
+
+        Piece destin=endCell.getPiece();
+        if(destin!=null && destin instanceof King)
+        {
+            if(isWhiteTurn)
+                status=GameStatus.WHITE_WIN;
+            else
+                status=GameStatus.BLACK_WIN;
         }
-        
-        // If capturing a piece, mark it as killed
-        if (destinationPiece != null) {
-            destinationPiece.setKilled(true);
-            System.out.println("   Captured " + destinationPiece.getSymbol() + "!");
+        if(destin!=null)
+        {
+            destin.setKilled(true);
         }
-        
-        // Move piece to new position
         endCell.setPiece(sourcePiece);
         startCell.setPiece(null);
-        
-        // Log the move
-        moveHistory.add(move);
-        
-        // Switch turn
-        isWhiteTurn = !isWhiteTurn;
-        
-        return true;
+        moveHistory.add(move)
     }
-    
 }
