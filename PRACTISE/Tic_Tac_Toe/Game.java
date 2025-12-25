@@ -76,6 +76,21 @@ public class Game {
      * continues while game is IN_PROGRESS
      * stops when someone winner or loses
      * 
+     * how builder design pattern
+     * use a private constructor and can only be called by builder
+     * this is the key of builder pattern
+     * user can't do new game(...)
+     * user should do Game.builder().---build()
+     * 
+     * private Game(Builder builder){
+     * 
+     * 
+     * 
+     * }
+     * 
+     * entry point to build a game
+     * Game.builder()
+     * returns a new  builder instance
      */
 
     public Game(Player player1,Player player2,int boardSize)
