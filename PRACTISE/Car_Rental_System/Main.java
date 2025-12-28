@@ -29,7 +29,7 @@ public class Main {
         if(reservation!=null)
         {
             Paymentstrategy payment= new UpiPayment("insdinv");
-            boolean paid =system.processPayment(reservation.getId(),payment);
+            boolean paid =system.processPayment(reservation.getId(),payment)
         }
     }
 }
