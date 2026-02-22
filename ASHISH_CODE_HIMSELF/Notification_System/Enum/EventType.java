@@ -1,0 +1,5 @@
+package ASHISH_CODE_HIMSELF.Notification_System.Enum;
+
+public class EventType {
+    ORDER_PLACED,SHIPPED,INTRANSIT,OUTFORDELIVERY,DELIVERED,FAILED;
+}
