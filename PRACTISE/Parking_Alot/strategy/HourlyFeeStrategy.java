@@ -9,7 +9,7 @@ public class HourlyFeeStrategy implements ParkingFeeStrategy {
     private static final double TRUCK_HOURLY_RATE = 30.0;
     
     @Override
-    public double calculateFee(VehicleType vehicletype,int duration, Durationtype durationtype)
+    public double calculateFee(SpotType vehicletype,int duration, Durationtype durationtype)
     {
         double hourlyRate;
         switch (vehicletype) {
