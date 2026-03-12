@@ -11,22 +11,36 @@ public class Elevator {
     private Direction direction;
     private ElevatorState state;
 
-    TreeSet<Integer> upstops;
-    TreeSet<Integer> downstops;
+    private TreeSet<Integer> upstops;
+    private TreeSet<Integer> downstops;
 
-    public Elevator(int id,int currentFloor, Direction direction, ElevatorState state, TreeSet<Integer> upstops, TreeSet<Integer> downstops, ElevatorState state)
+    public Elevator(int id)
     {
         this.id=id;
-        this.currentFloor=currentFloor;
-        this.direction=direction;
-        this.state=state.IDLE;
+        this.currentFloor=0;
+        this.direction=Direction.IDLE;
+        this.state=ElevatorState.IDLE;
         this.upstops=new TreeSet<>();
         this.downstops=new TreeSet<>();
     }
 
     public void move()
     {
-        //
+        if(!upstops.isEmpty()){
+            direction=Direction.UP;
+            state=ElevatorState.UPWARD;
+            moveUp();
+        }
+        else if(!downstops.isEmpty())
+        {
+            direction=Direction.DOWN;
+            state=ElevatorState.DOWNWARD;
+            moveDown();
+        }
+        else{
+            state=ElevatorState.IDLE;
+            direction=Direction.IDLE;
+        }
     }
 
     public void moveUp()
@@ -47,11 +61,11 @@ public class Elevator {
 
     public void addStops(int floor)
     {
-        if(currentFloor>floor)
+        if(currentFloor<floor)
         {
             upstops.add(floor);
         }
-        else if(currentFloor<floor)
+        else if(currentFloor>floor)
         {
             downstops.add(floor);
         }
@@ -64,8 +78,8 @@ public class Elevator {
 
     public void handleRequest()
     {
-
-        
+        addStops(request.getSourceFloor());
+        addStops(request.getDesiredFloor());   
     }
     public int getId()            { return id; }
     public int getCurrentFloor()  { return currentFloor; }

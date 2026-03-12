@@ -8,10 +8,10 @@ import ASHISH_CODE_HIMSELF.Elevator_System_himself.DispatchStrategy.FcfsStrategy
 import ASHISH_CODE_HIMSELF.Elevator_System_himself.Models.Elevator;
 
 public class ElevatorController {
-    public static ElevatorController instance;
+    private static ElevatorController instance;
 
     private ElevatorController(){
-        this.elevator=new ArrayList<>();
+        this.elevators=new ArrayList<>();
         this.strategy=new FcfsStrategy();
     }
 
@@ -26,20 +26,20 @@ public class ElevatorController {
     List<Elevator> elevators;
     DispatchStrategy strategy;
 
-    void addElevator(Elevator e)
+    public void addElevator(Elevator e)
     {
         elevators.add(e);
     }
 
-    void requestFloor(Request request)
+    public void requestFloor(Request request)
     {
         System.out.println("\n>> New " + request);
 
         Elevator picked = strategy.selectElevator(request, elevators);
-        picked.handleRequest();
+        picked.handleRequest(request);
     }
 
-    void move()
+    public void move()
     {
         for(Elevator e:elevators)
         {

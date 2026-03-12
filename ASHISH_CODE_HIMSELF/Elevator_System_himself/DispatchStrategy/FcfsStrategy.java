@@ -7,7 +7,7 @@ import ASHISH_CODE_HIMSELF.Elevator_System_himself.Models.Elevator;
 
 public class FcfsStrategy implements DispatchStrategy{
     @Override
-    public Elevator selecElevator(Request request, List<Elevator> elevator)
+    public Elevator selectElevator(Request request, List<Elevator> elevator)
     {
         for(Elevator ele:elevator)
         {
